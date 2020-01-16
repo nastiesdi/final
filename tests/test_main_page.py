@@ -3,10 +3,7 @@ from pages.login_page import LoginPage
 import time
 
 
-link ='http://selenium1py.pythonanywhere.com/ru/accounts/login/'
-
-def go_to_login_page(browser):
-    page = MainPage(browser, link)
+link ="http://selenium1py.pythonanywhere.com"
 
 class TestLogin(object):
 
@@ -16,9 +13,11 @@ class TestLogin(object):
         page.should_be_login_link()
 
     def test_all_elements_on_login_page_exist(self, browser):
-        page = LoginPage(browser, link)
+        page = MainPage(browser, link)
         page.open()
-        page.should_be_login_page()
+        page.go_to_login_page()
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.should_be_login_page()
 
 
 
